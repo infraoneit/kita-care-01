@@ -154,11 +154,7 @@ export function VerwaltungTable({ rows }: { rows: VerwaltungRow[] }) {
                     href={`/verwaltung/${row.id}`}
                     prefetch={false}
                     className="text-pink-600 hover:underline"
-                    onClick={() => {
-                      // #region agent log
-                      fetch('http://127.0.0.1:7244/ingest/f6bdf313-ecb7-43ca-a07e-715146912be3', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ location: 'VerwaltungTable.tsx:186', message: 'Verwaltung row click', data: { rowId: row.id, childName: row.childName, href: `/verwaltung/${row.id}` }, timestamp: Date.now(), sessionId: 'debug-session', runId: 'pre-fix', hypothesisId: 'H4' }) }).catch(() => { });
-                      // #endregion agent log
-                    }}
+                    onClick={() => {}}
                   >
                     Details/Bearbeiten
                   </Link>

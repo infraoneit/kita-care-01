@@ -16,16 +16,9 @@ export function DailyStats({
   const [loading, setLoading] = useState(false);
   const dateValue = selectedDate || "";
 
-  useEffect(() => {
-    // #region agent log
-    fetch('http://127.0.0.1:7244/ingest/f6bdf313-ecb7-43ca-a07e-715146912be3', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ location: 'DailyStats.tsx:12', message: 'DailyStats render', data: { hasSelectedDate: Boolean(selectedDate), dateValue }, timestamp: Date.now(), sessionId: 'debug-session', runId: 'pre-fix', hypothesisId: 'H1' }) }).catch(() => { });
-    // #endregion agent log
-  }, [selectedDate, dateValue]);
+  useEffect(() => {}, [selectedDate, dateValue]);
 
   const handleSubmit = () => {
-    // #region agent log
-    fetch('http://127.0.0.1:7244/ingest/f6bdf313-ecb7-43ca-a07e-715146912be3', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ location: 'DailyStats.tsx:20', message: 'DailyStats submit', data: { dateValue }, timestamp: Date.now(), sessionId: 'debug-session', runId: 'pre-fix', hypothesisId: 'H1' }) }).catch(() => { });
-    // #endregion agent log
     setLoading(true);
   };
 

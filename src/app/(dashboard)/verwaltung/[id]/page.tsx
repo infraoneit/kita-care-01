@@ -31,14 +31,8 @@ export default async function VerwaltungDetailPage({
     logDateBase.setDate(logDateBase.getDate() - 2);
   }
   const logDateString = format(logDateBase, "yyyy-MM-dd");
-  // #region agent log
-  fetch('http://127.0.0.1:7244/ingest/f6bdf313-ecb7-43ca-a07e-715146912be3', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ location: 'verwaltung/[id]/page.tsx:20', message: 'Verwaltung detail date select', data: { logDateKey, logDateString, paramsId: id }, timestamp: Date.now(), sessionId: 'debug-session', runId: 'pre-fix', hypothesisId: 'H2' }) }).catch(() => { });
-  // #endregion agent log
 
   const child = getDemoChildById(id);
-  // #region agent log
-  fetch('http://127.0.0.1:7244/ingest/f6bdf313-ecb7-43ca-a07e-715146912be3', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ location: 'verwaltung/[id]/page.tsx:40', message: 'Verwaltung detail loaded', data: { paramsId: id, childId: child?.id || null, childName: child ? `${child.firstName} ${child.lastName}` : null }, timestamp: Date.now(), sessionId: 'debug-session', runId: 'pre-fix', hypothesisId: 'H4' }) }).catch(() => { });
-  // #endregion agent log
 
   if (!child || child.organisationId !== session.organisationId) notFound();
 

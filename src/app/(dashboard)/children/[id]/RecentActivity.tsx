@@ -28,18 +28,12 @@ export async function RecentActivity({ childId }: { childId: string }) {
   deleteCutoff.setDate(deleteCutoff.getDate() - 2);
   deleteCutoff.setHours(0, 0, 0, 0);
 
-  // #region agent log
-  fetch('http://127.0.0.1:7244/ingest/f6bdf313-ecb7-43ca-a07e-715146912be3', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ location: 'RecentActivity.tsx:34', message: 'RecentActivity filter', data: { selectedDate: null, dateFilter: null }, timestamp: Date.now(), sessionId: 'debug-session', runId: 'pre-fix', hypothesisId: 'H3' }) }).catch(() => { });
-  // #endregion agent log
 
   const logs = getDemoDailyReportsByChildId(childId)
     .slice()
     .sort((a, b) => b.date.getTime() - a.date.getTime())
     .slice(0, 10);
 
-  // #region agent log
-  fetch('http://127.0.0.1:7244/ingest/f6bdf313-ecb7-43ca-a07e-715146912be3', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ location: 'RecentActivity.tsx:45', message: 'RecentActivity results', data: { count: logs.length, dates: logs.map((l) => new Date(l.date).toISOString()) }, timestamp: Date.now(), sessionId: 'debug-session', runId: 'pre-fix', hypothesisId: 'H3' }) }).catch(() => { });
-  // #endregion agent log
 
   if (logs.length === 0) {
     return <div className="card p-6 bg-gray-50 text-center text-gray-500">Keine Aktivitäten in letzter Zeit.</div>;
